@@ -1,0 +1,61 @@
+body {
+  font-family: 'Open Sans', Helvetica, sans-serif;
+}
+
+h1 {
+  font-weight: 400;
+}
+
+h2 {
+  font-weight: 200;
+}
+
+.sg-masthead {
+  background-color: #563F80;
+  padding: 0.75em 0;
+  margin-bottom: 4.5em;
+}
+
+.sg-masthead__logo {
+  width: 5.75em;
+  margin: 0 auto;
+}
+
+.sg-masthead__nav {
+
+}
+
+.sg-menu {
+  position: fixed;
+}
+
+  .sg-menu__title {
+    font-weight: 600;
+    margin-top: 1.5em;
+    display: block;
+  }
+    .sg-menu__title:first-of-type {
+      margin-top: 0;
+    }
+
+  .sg-menu__item {
+    text-decoration: none;
+    display: block;
+    transition: all 0.2s;
+  }
+    .sg-menu__item:hover {
+      border-left: 0.25em solid #563F80;
+      padding: 0 0.5em;
+    }
+
+
+.swatch {
+  padding: 3em 0;
+  text-align: center;
+  width: 10.5em;
+}
+
+  .color-property {
+    font-size: 0.75em;
+    line-height: ;
+  }

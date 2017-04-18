@@ -1,0 +1,42 @@
+{
+  "name": "mdcss-theme-aetna-digital",
+  "version": "1.0.0",
+  "description": "Aetna Digital style guide theme",
+  "keywords": [
+    "mdcss",
+    "mdcss-theme",
+    "theme",
+    ""
+  ],
+  "author": "Jarod Taylor <jarodrtaylor@gmail.com>",
+  "license": "CC0-1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jarodtaylor/mdcss-theme-aetna-digital.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jarodtaylor/mdcss-theme-aetna-digital/issues"
+  },
+  "homepage": "git+https://github.com/jarodtaylor/mdcss-theme-aetna-digital.git#readme",
+  "dependencies": {
+    "ejs": "^2.3.4",
+    "fs-extra": "^0.26.1",
+    "fs-promise": "^0.3.1",
+    "object-assign": "^4.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^1.8.0",
+    "mdcss": "^1.1.1",
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.2"
+  },
+  "scripts": {
+    "lint": "eslint . --ignore-path .eshintignore",
+    "test-fixtures": "tape test.js | tap-spec",
+    "test": "npm run lint && npm run test-fixtures"
+  },
+  "engines": {
+    "iojs": ">=2.0.0",
+    "node": ">=0.12.0"
+  }
+}
