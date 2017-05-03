@@ -1,0 +1,64 @@
+:root {
+  --baseline-grid-color: rgba(0,0,0,0.75);
+  --baseline-grid-size-1: resolve((strip(var(--base-font-size-1)) * 16) * var(--base-line-height))px;
+  --baseline-grid-size-2: resolve((strip(var(--base-font-size-2)) * 16) * var(--base-line-height))px;
+}
+
+body {
+  position: relative;
+  min-height: 300%;
+}
+
+body:after {
+  position: absolute;
+  width: auto;
+  height: auto;
+  z-index: 9999;
+  content: '';
+  display: block;
+  pointer-events: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    180deg,
+    var(--baseline-grid-color) 1px,
+    transparent 1px
+  );
+  background-size: 1px var(--baseline-grid-size-1);
+}
+
+body:active:after {
+  display: none;
+}
+
+@media (--breakpoint-sm) {
+
+  body {
+    position: relative;
+    min-height: 400%;
+  }
+
+  body:after {
+    position: absolute;
+    width: auto;
+    height: auto;
+    z-index: 9999;
+    content: '';
+    display: block;
+    pointer-events: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.25;
+    background: linear-gradient(
+      180deg,
+      var(--baseline-grid-color) 1px,
+      transparent 1px
+    );
+    background-size: 1px var(--baseline-grid-size-2);
+  }
+
+}

@@ -1,5 +1,5 @@
-/* eslint-env browser */
-/* global examples, Prism */
+import { wrapEl } from './helpers';
+import './examples';
 
 document.addEventListener('DOMContentLoaded', function () {
 	Array.prototype.forEach.call(document.querySelectorAll('pre code[class^="lang"]'), function (code) {
@@ -23,12 +23,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		code.removeAttribute('class');
 
-		// conditionally syntax highlight code
-		if (conf.lang in Prism.languages) code.innerHTML = Prism.highlight(text, Prism.languages[conf.lang]);
-
 		// conditionally create code examples
 		if (conf.example in examples.lang) {
 			examples.lang[conf.example](pre, text, conf);
+		} else {
+			var exampleCode = document.createElement('div');
+			exampleCode.classList.add('example-code', 'clearfix');
+			if(conf.lang === 'open') exampleCode.classList.add('example-code--is-visible');
+			var codeExampleToggle = exampleCode.appendChild(document.createElement('div'));
+			codeExampleToggle.classList.add('example-code__toggle');
+			pre.className = 'example-code__pre';
+			var exampleWrapper = wrapEl(pre, exampleCode);
 		}
+	});
+
+	var exampleCode = document.querySelectorAll('.example-code');
+
+	Array.prototype.map.call(exampleCode, function(el) {
+		var toggler = el.querySelector('.example-code__toggle');
+		toggler.addEventListener('click', function(){
+			el.classList.toggle('example-code--is-visible');
+		});
 	});
 });

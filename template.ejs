@@ -6,7 +6,6 @@
     <title><% opts.title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700" rel="stylesheet">
-    <link href="./rhythm.css" rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
     <% opts.css.forEach(function (href) {
       %><link href="<%= href %>" rel="stylesheet"><%
@@ -25,14 +24,14 @@
       </nav>-->
     </header>
     <div class="container">
-      <div class="grid">
+      <div class="grid-sm">
         <div class="grid__col-sm-3">
           <nav class="sg-menu">
             <% menu(list, 1) %>
           </nav>
         </div>
         <div class="grid__col-sm-8 grid__col-sm-offset-1">
-          <% sections(list, 2) %>
+          <% sections(list, 1) %>
         </div>
       </div>
     </div>
@@ -41,9 +40,7 @@
         <small>Last modified <%- lastModified() %></small>
       </footer>
     </div>
-    <script src="prism.js?871234"></script>
-    <script src="examples.js?873428"></script>
-    <script src="script.js?02359872"></script>
+    <script src="scripts.js"></script>
     <% opts.js.forEach(function (src) {
       %><script src="<%= src %>"></script><%
     }); %>
@@ -74,8 +71,14 @@ function sections(children, depth) {
 
   children.sort(sort).forEach(function (child) {
     %>
-    <section<% if (child.name) { %> id="<%= child.name %>"<% } %>>
-      <% if (child.title) { %><%- '<h' + (depth - 1) + ' class="page-title">' %><%= child.title %><%- '</h' + (depth - 1) + '>' %><% } %>
+    <section class="sg-section"<% if (child.name) { %> id="<%= child.name %>"<% } %>>
+      <% if (depth > 1) { %>
+        <% if (child.title) { %>
+          <%- '<h' + (depth - 1) + ' class="page-title">' %>
+            <%= child.title %>
+          <%- '</h' + (depth - 1) + '>' %>
+        <% } %>
+      <% } %>
 
       <div class="markdown-body">
         <%- child.content %>

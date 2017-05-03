@@ -27,7 +27,7 @@ module.exports = function (themeopts) {
 			js:      [],
 			bodyjs:  [],
 			htmlcss: 'background:none;border:0;clip:auto;display:block;height:auto;margin:0;padding:0;position:static;width:auto',
-			bodycss: 'background:none;border:0;clip:auto;display:block;height:auto;margin:0;padding:16px;position:static;width:auto'
+			bodycss: 'background:none;border:0;clip:auto;display:block;height:auto;margin:0;padding:0;position:static;width:auto'
 		}, themeopts.examples);
 
 	// return theme

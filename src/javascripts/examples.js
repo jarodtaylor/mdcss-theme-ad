@@ -21,27 +21,34 @@ examples.lang = {
 
 		function parseColor(color) {
 			var colorNode = document.createElement('div');
+			var colorSwatch = document.createElement('div');
+			var colorGrid = document.createElement('div');
+			var colorHex = document.createElement('div');
+			var colorVar = document.createElement('div');
 
-			colorNode.className = 'swatch';
+			colorNode.classList.add('color');
+			colorSwatch.classList.add('color-swatch');
+			colorGrid.classList.add('grid');
+			colorHex.classList.add('color-swatch__hex', 'grid__col');
+			colorVar.classList.add('color-swatch__var', 'grid__col');
 
-			colorNode.style.backgroundColor = color.color;
+			colorSwatch.style.backgroundColor = color.color;
 
-			var contrastColor = contrast(color.color);
+			colorNode.appendChild(colorSwatch);
+			colorSwatch.appendChild(colorGrid);
+			colorGrid.appendChild(colorHex);
+			// colorGrid.appendChild(colorVar);
+			colorHex.appendChild(document.createTextNode(color.color));
 
-			colorNode.style.color = contrastColor;
-
-			colorNode.style.textShadow = '0 0 1px ' + (contrastColor === '#ffffff' ? '#000000' : '#ffffff');
-
-			colorNode.appendChild(document.createTextNode(color.color));
 
 			Object.keys(color).filter(function (key) { return key !== 'color' }).forEach(function (key) {
-				var propertyNode = colorNode.appendChild(document.createElement('div'));
+				var varNode = colorGrid.appendChild(colorVar);
 
-				propertyNode.className = 'color-property';
+				// varNode.className = 'color__variable';
 
-				propertyNode.setAttribute('data-name', key);
+				varNode.setAttribute('data-name', key);
 
-				propertyNode.appendChild(document.createTextNode(color[key]));
+				varNode.appendChild(document.createTextNode(color[key]));
 			});
 
 			return colorNode;
@@ -68,9 +75,11 @@ examples.lang = {
 		}
 	},
 	html: function (pre, value, conf) {
-		// get wrap
+		var codeExample = document.createElement('div');
+		codeExample.classList.add('example-code', 'clearfix');
+
 		var wrap = pre.parentNode;
-    pre.className = 'highlight';
+    pre.classList.add('example-code__pre');
 
     var preview = wrap.insertBefore(document.createElement('div'), pre);
     preview.className  = 'docs-example clearfix';
@@ -85,8 +94,16 @@ examples.lang = {
     iframe.className = 'docs-iframe';
 		var style  = iframe.style;
 
+		var closestSection = iframe.closest('.sg-section');
+		var sectionId = closestSection.id;
+
     var resizeRight = resize.appendChild(document.createElement('span'));
     resizeRight.className = 'c-resize--right';
+
+		wrap.insertBefore(codeExample, pre);
+		var codeExampleToggle = codeExample.appendChild(document.createElement('div'));
+		codeExampleToggle.classList.add('example-code__toggle');
+		codeExample.appendChild(pre);
 
 		// get iframe dom
 		var iwin = iframe.contentWindow;
@@ -117,14 +134,12 @@ examples.lang = {
 
 		idoc.write(html);
 
-		idoc.close();
+		idoc.documentElement.setAttribute('style', examples.htmlcss);
+		idoc.documentElement.classList.add('sg-example', 'sg-example--'+sectionId);
+		idoc.body.setAttribute('style', examples.bodycss);
+    iframe.setAttribute('class', 'docs-iframe clearfix');
 
-		// add default block styles to iframe dom
-		iwin.addEventListener('load', function(){
-			idoc.documentElement.setAttribute('style', examples.htmlcss);
-			idoc.body.setAttribute('style', examples.bodycss);
-      iframe.setAttribute('class', 'docs-iframe clearfix');
-		});
+		idoc.close();
 
 		if (conf.width) style.width = String(conf.width);
 
@@ -144,8 +159,10 @@ examples.lang = {
 			}
 		}
 
-    iwin.addEventListener('load', function () {
-      resizeFunc();
-    });
+    iwin.addEventListener('load', resizeFunc);
+
+		resizeFunc();
+
+		setInterval(resizeFunc, 334);
 	}
 };
