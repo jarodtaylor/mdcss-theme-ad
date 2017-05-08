@@ -137,7 +137,7 @@ iframe {
   }
 }
 
-.example-code--is-visible {
+.example-code--is-open {
   & .example-code__pre {
     opacity: 1;
     max-height: 800px;
@@ -147,6 +147,10 @@ iframe {
   & .example-code__toggle:before {
     content: 'Hide Code';
   }
+}
+
+.example-code--is-hidden {
+  display: none;
 }
 
 pre + h3 {

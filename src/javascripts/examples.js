@@ -77,6 +77,7 @@ examples.lang = {
 	html: function (pre, value, conf) {
 		var codeExample = document.createElement('div');
 		codeExample.classList.add('example-code', 'clearfix');
+		if(conf.example === 'html:hidden') codeExample.classList.add('example-code--is-hidden');
 
 		var wrap = pre.parentNode;
     pre.classList.add('example-code__pre');
