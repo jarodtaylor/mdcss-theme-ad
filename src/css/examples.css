@@ -13,7 +13,7 @@ body {
   width:auto
 }
 
-[class^="grid__col"]:after {
+[class^="col"]:after {
   content: '';
   display: block;
   width: 100%;
@@ -22,7 +22,7 @@ body {
   margin-bottom: 20px;
 }
 
-[class*="grid--align-"] [class^="grid__col"]:first-child:after {
+[class*="grid--align-"] [class^="col"]:first-child:after {
   height: 120px;
 }
 
