@@ -16,8 +16,6 @@ h3 {
   color: #455A64;
 }
 
-
-
 .sg-masthead {
   background-color: #563F80;
   padding: var(--half-spacing-unit) 0;
@@ -46,7 +44,7 @@ h3 {
     text-decoration: none;
     display: block;
     transition: all 0.2s;
-    color: #455A64;
+    color: #999;
   }
     .sg-menu__item:hover {
       border-left: 0.25em solid #563F80;
