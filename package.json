@@ -1,7 +1,7 @@
 {
-  "name": "mdcss-theme-aetna-digital",
+  "name": "mdcss-theme-ad",
   "version": "1.0.0",
-  "description": "Aetna Digital style guide theme",
+  "description": "AD styleguide theme",
   "keywords": [
     "mdcss",
     "mdcss-theme",
@@ -12,12 +12,12 @@
   "license": "CC0-1.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jarodtaylor/mdcss-theme-aetna-digital.git"
+    "url": "git+https://github.com/jarodtaylor/mdcss-theme-ad.git"
   },
   "bugs": {
-    "url": "https://github.com/jarodtaylor/mdcss-theme-aetna-digital/issues"
+    "url": "https://github.com/jarodtaylor/mdcss-theme-ad/issues"
   },
-  "homepage": "git+https://github.com/jarodtaylor/mdcss-theme-aetna-digital.git#readme",
+  "homepage": "git+https://github.com/jarodtaylor/mdcss-theme-ad.git#readme",
   "dependencies": {
     "ejs": "^2.3.4",
     "fs-extra": "^0.26.1",
