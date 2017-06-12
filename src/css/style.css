@@ -10,12 +10,6 @@ h1 {
   color: #393939;
 }
 
-h3 {
-  @apply --h4;
-  font-style: italic;
-  color: #455A64;
-}
-
 .sg-masthead {
   background-color: #563F80;
   padding: var(--half-spacing-unit) 0;
